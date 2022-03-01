@@ -5,8 +5,20 @@ import react from 'react';
 
 // --------------- React "Box" Component ------------
 // our individual Wordle box, containing one letter
-export default function Box({letter}) {
+export default function Box({letter, success}) {
   var textColor = "black";
+  var backColor = "white";
+
+  //uses success variable to know what backgroundColor to use
+  if(success === "green") {
+    backColor = "#6aaa64";
+  } else if(success === "yellow" ) {
+    backColor = "#c9b458";
+  } else if(success === "grey") {
+    backColor =  "#787c7e";
+  } else {
+    backColor = "white";
+  }
 
   // ------ styling ----------
   //notice how we can use outside variables inside our "boxStyle"
@@ -14,7 +26,7 @@ export default function Box({letter}) {
     border: "solid black 1px",
     width: "60px",
     height: "60px",
-    backgroundColor: "white",
+    backgroundColor: backColor,
     fontSize: "40px",
     color: textColor,
     fontWeight: "bold"
@@ -27,5 +39,6 @@ export default function Box({letter}) {
     <div style={boxStyle}>
       {letter}
     </div>
+
   )
 }
